@@ -101,14 +101,19 @@ This repository is licensed under the MIT License, with the following **addition
 
 ## 追加条項 / Additional Terms
 
-- 作成者の**事前許諾なしに**、本リポジトリに含まれるコードやデータの**再配布・公開（二次利用を含む）を禁止**します。  
-  Redistribution or publication (modified or unmodified) is **prohibited without prior written permission** from the author.
+- 再配布の制限 / Redistribution Restriction: 作成者の事前許諾なしに、本リポジトリに含まれる「Environment（Docker構成・依存関係の設定等）」の再配布・公開（二次利用を含む）を禁止します。
 
-- 作成者の許諾を得ている場合でも、**公開停止や使用中止の要請があった際は速やかに従ってください**。  
-  Even with permission, **you must promptly cease redistribution if requested by the author**.
+Redistribution or publication of the Environment (modified or unmodified) is prohibited without prior written permission from the author.
 
-- 本追加条項は **2025年7月30日** より効力を発し、**それ以前の再配布については適用されません（遡及適用なし）**。  
-  These terms take effect from **July 30, 2025**, and **do not apply retroactively** to redistribution before this date.
+- 構成の整合性 / Configuration Integrity: 本環境は特定のライブラリ構成で動作を検証したものです。構成の変更（バージョンの変更等）を伴う利用について、作者は一切の動作保証およびサポートを行いません。
+
+要請への遵守 / Compliance with Requests: 作成者の許諾を得ている場合でも、公開停止や使用中止の要請があった際は速やかに従ってください。
+
+Even with permission, you must promptly comply if the author requests the cessation of redistribution or use.
+
+- 効力発生日 / Effective Date: 本追加条項は 2025年7月30日 より効力を発し、それ以前の再配布については適用されません（遡及適用なし）。
+
+These terms take effect from July 30, 2025, and do not apply retroactively to activities before this date.
 
 # ReleaseNote
 ## 2023-05-22　Version1.0-release
@@ -148,7 +153,12 @@ This repository is licensed under the MIT License, with the following **addition
 * README.mdを更新しました．
 
 ## 2025-07-30　Version2.1.a-release
-* [重要]本レポジトリの権利を保証するため，ライセンスを設けました．詳細はLICENSEを御覧ください．
+* [重要]制限の適用範囲を明確にするため条項を改訂しました。以前のバージョンではサードパーティのコードに対しても制限が適用されると解釈されかねない記述が含まれていましたが、今回の修正により、独自構成（Environment）と第三者のコードを明確に分離しました。これは法的透明性の確保と権利関係の適正化を目的としています。．詳細はLICENSEを御覧ください．
+* ディープラーニング学習中に利用者が途中でブラウザを閉じてもプログラムが終了しないように設定を変更しました．
+* README.mdを更新しました．
+
+## 2026-02-06　Version2.1.a-release
+* [重要]一部Licenseに過大
 * ディープラーニング学習中に利用者が途中でブラウザを閉じてもプログラムが終了しないように設定を変更しました．
 * README.mdを更新しました．
 
