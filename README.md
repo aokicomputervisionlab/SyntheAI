@@ -99,6 +99,15 @@ docker-compose up -d
 本リポジトリは、MITライセンスに基づいて提供されますが、以下の**追加利用規約**が適用されます。  
 This repository is licensed under the MIT License, with the following **additional terms**.
 
+#　謝辞 / Acknowledgements
+本リポジトリの開発にあたり、以下のリソースを参考にさせていただきました。
+
+[TensorFlow Tutorials - 畳み込みニューラルネットワーク (CNN)](https://www.tensorflow.org/tutorials/images/cnn?hl=ja)
+
+（動作検証用のベースコードとして活用させていただいております。）
+
+公式ドキュメントおよび関連書籍: Docker Hub 公式イメージおよび各ライブラリ（PyTorch/TensorFlow）のリファレンスを基に、依存関係の解決を行いました。
+
 ## 追加条項 / Additional Terms
 
 - 再配布の制限 / Redistribution Restriction: 作成者の事前許諾なしに、本リポジトリに含まれる「Environment（Docker構成・依存関係の設定等）」の再配布・公開（二次利用を含む）を禁止します。
@@ -157,11 +166,9 @@ These terms take effect from July 30, 2025, and do not apply retroactively to ac
 * ディープラーニング学習中に利用者が途中でブラウザを閉じてもプログラムが終了しないように設定を変更しました．
 * README.mdを更新しました．
 
-## 2026-02-06　Version2.1.a-release
-* [重要]一部Licenseに過大
-* ディープラーニング学習中に利用者が途中でブラウザを閉じてもプログラムが終了しないように設定を変更しました．
+## 2026-02-06　LICENSE-release
+* [重要]制限の適用範囲を明確にするため条項を改訂しました。以前のバージョンではサードパーティのコードに対しても制限が適用されると解釈されかねない記述が含まれていましたが、今回の修正により、独自構成（Environment）と第三者のコードを明確に分離しました。これは法的透明性の確保と権利関係の適正化を目的としています。
 * README.mdを更新しました．
-
 
 # Author
 
