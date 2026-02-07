@@ -99,12 +99,18 @@ docker-compose up -d
 本リポジトリは、MITライセンスに基づいて提供されますが、以下の**追加利用規約**が適用されます。  
 This repository is licensed under the MIT License, with the following **additional terms**.
 
-#　謝辞 / Acknowledgements
+
+# 謝辞 / Acknowledgements
 本リポジトリの開発にあたり、以下のリソースを参考にさせていただきました。
 
-[TensorFlow Tutorials - 畳み込みニューラルネットワーク (CNN)](https://www.tensorflow.org/tutorials/images/cnn?hl=ja)
-
-（動作検証用のベースコードとして活用させていただいております。）
+* **[TensorFlow Tutorials - 畳み込みニューラルネットワーク (CNN)](https://www.tensorflow.org/tutorials/images/cnn?hl=ja)** （動作検証用のベースコードとして活用させていただいております）
+  
+* **[PyTorch Tutorials - Neural Networks](https://docs.pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html)** （PyTorch環境の動作確認用サンプルとして引用しております）
+  
+* **[CycleGAN (Unpaired Image-to-Image Translation)](https://github.com/junyanz/CycleGAN)** （本リポジトリでは、上記アルゴリズムを基に、佐々木氏 (sasakirh@stf.teu.ac.jp) が実装したものを用いております）
+  
+* **[Facades Dataset](https://www.kaggle.com/datasets/balraj98/facades-dataset)** （本リポジトリでは、上記データセットをMatファイル形式に変換し、学習・検証用データとして使用しております）
+  （動作検証用のベースコードとして活用させていただいております。）
 
 公式ドキュメントおよび関連書籍: Docker Hub 公式イメージおよび各ライブラリ（PyTorch/TensorFlow）のリファレンスを基に、依存関係の解決を行いました。
 
