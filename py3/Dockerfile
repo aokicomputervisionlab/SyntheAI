@@ -1,9 +1,9 @@
 FROM tensorflow/tensorflow:2.17.0-gpu
 
-# タイムゾーンの設定
+# TimeZone　Setup
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
-# 必要なパッケージのインストール
+# Base Environment Setup
 RUN apt-get update && apt-get install -y \ 
     tzdata \
     git \ 
@@ -16,15 +16,12 @@ RUN apt-get update && apt-get install -y \
 &&  apt-get clean \
 &&  rm -rf /var/lib/apt/lists/*
 
-# 研究室用追加パッケージ
-RUN pip install --no-cache-dir praat-parselmouth
-
-# requirements.txt のコピーとパッケージのインストール
+# copy to requirements.txt and requirements install 
 COPY requirements.txt /install/requirements.txt
 RUN pip install --upgrade pip
 RUN pip install -r /install/requirements.txt
-# PyTorchのインストール
+# Install for PyTorch Library
 RUN pip install torch==2.4.1+cu121 torchvision==0.19.1+cu121 torchaudio==2.4.1+cu121 --index-url https://download.pytorch.org/whl/cu121
 
-# TensorFlowのログレベルを設定
+# Tensorflow Log Level Setup(Delete Warning Message)
 ENV TF_CPP_MIN_LOG_LEVEL=2
