@@ -4,8 +4,8 @@ services:
     build:
       context: ./py3
       dockerfile: Dockerfile
-    # メモリのサイズを変える
-    shm_size: '8gb'
+    # Shared Memory Optimization
+    shm_size: '8589934592'
     entrypoint: >
       jupyter-lab
       --allow-root
@@ -15,17 +15,18 @@ services:
       --notebook-dir=/workspace
     expose:
       - "8888"
-    #ここの左のポート番号を好きな値に設定 
+    # Port mapping for Jupyter Notebook / Web interface
     ports:
       - "8888:8888"
     volumes:
       - ./py3/root_jupyter:/root/.jupyter
       - ./workspace:/workspace
 
-    #GPUを使う場合の設定
+    # Setting for vGPU (Disabled in normal GPU Environments)
     environment:
       - "NVIDIA_VISIBLE_DEVICES=all"
       - "NVIDIA_DRIVER_CAPABILITIES=all"
+    # Hard-coded GPU IDs to ensure compatibility with local hardware setup
     deploy:
       resources:
         reservations:
