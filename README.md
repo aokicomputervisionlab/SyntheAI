@@ -1,9 +1,27 @@
 # SyntheAI：PyTorch & TensorFlow Unified Development Environment（旧：Lyon-env）　version:2.1.a
-TensorflowとPyTorchを誰でも簡単に利用できるように開発された，Nootebook形式のAI開発・研究環境です．
+TensorflowとPyTorchを誰でも簡単に利用できるように開発された，Notebook形式のAI開発・研究環境です．元来Lyon環境での利用を想定していましたが, Lyon以外での環境にも利用可能に変更いたしました. 
 
-# 名称変更のお知らせ
-利用者の拡大・外部サービスでの利用拡大の背景から名前をLyonに限定せず，利用できるように新たにSyntheAI(略称SAI)に変更しました．
-色々な所属の方に使っていただき開発者として非常に誇らしいです！
+# 謝辞 / Acknowledgements
+本リポジトリの開発にあたり、以下のリソースを参考にさせていただきました。
+* [DockerでGPUが使えるJupyter環境を作る|はてなブログ: まくんごろん氏](https://makungoron-music.hatenablog.com/entry/docker-jupyter)
+* [DockerでGPUを利用するための環境構築|IDnet 技術コラム](https://www.idnet.co.jp/column/page_187.html)
+* Lyonに関する教育用コンテンツ (東京工科大学 CS学部 大野先生)
+
+
+上記のリソースはいずれも、Docker上でGPUリソースを適切に割り当て、Jupyter環境を構築する手法として非常に標準的かつ優れた知見を含んでおります。
+本リポジトリの制作にあたっては、大野先生のLyonに関する教育用コンテンツより多大な影響と着想をいただいております。これに加え、Web上で公開されている各技術資料からも多くの知見を拝借し、それらを自身の研究環境に合わせて整理・統合することで、本パッケージを形にすることができました。
+貴重な知見を惜しみなく公開されている各氏に、心より感謝申し上げます。
+
+* **[TensorFlow Tutorials - 畳み込みニューラルネットワーク (CNN)](https://www.tensorflow.org/tutorials/images/cnn?hl=ja)** （動作検証用のベースコードとして活用させていただいております）
+  
+* **[PyTorch Tutorials - Neural Networks](https://docs.pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html)** （PyTorch環境の動作確認用サンプルとして引用しております）
+  
+* **[CycleGAN (Unpaired Image-to-Image Translation)](https://github.com/junyanz/CycleGAN)** （本リポジトリでは、上記アルゴリズムを基に、佐々木氏 (sasakirh@stf.teu.ac.jp) が実装したものを用いております）
+  
+* **[Facades Dataset](https://www.kaggle.com/datasets/balraj98/facades-dataset)** （本リポジトリでは、上記データセットをMatファイル形式に変換し、学習・検証用データとして使用しております）
+  （動作検証用のベースコードとして活用させていただいております。）
+
+公式ドキュメントおよび関連書籍: Docker Hub 公式イメージおよび各ライブラリ（PyTorch/TensorFlow）のリファレンスを基に、依存関係の解決を行いました。
 
 # Requirement
 
@@ -25,7 +43,7 @@ cd SyntheAI
 ```
 Docker-compose をビルドする
 ```bash
-docker-compose build --no-cahce
+docker-compose build --no-cache
 ```
 ビルドしたイメージを起動する
 ```bash
@@ -95,6 +113,7 @@ docker-compose up -d
 
      [テスト済みのビルド構成|Tensorflow](https://www.tensorflow.org/install/source?hl=ja#gpu)
 
+
 # LICENCE
 本リポジトリは MIT License のもとで公開されていますが、Docker構成や依存関係などの「Environment（環境設定）」については、動作の整合性を保つための追加利用規約があります。
 
@@ -126,19 +145,7 @@ Even with prior permission, you must promptly comply if the author requests the 
 
 These terms take effect from July 30, 2025, and do not apply retroactively to activities prior to this date.
 
-# 謝辞 / Acknowledgements
-本リポジトリの開発にあたり、以下のリソースを参考にさせていただきました。
 
-* **[TensorFlow Tutorials - 畳み込みニューラルネットワーク (CNN)](https://www.tensorflow.org/tutorials/images/cnn?hl=ja)** （動作検証用のベースコードとして活用させていただいております）
-  
-* **[PyTorch Tutorials - Neural Networks](https://docs.pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html)** （PyTorch環境の動作確認用サンプルとして引用しております）
-  
-* **[CycleGAN (Unpaired Image-to-Image Translation)](https://github.com/junyanz/CycleGAN)** （本リポジトリでは、上記アルゴリズムを基に、佐々木氏 (sasakirh@stf.teu.ac.jp) が実装したものを用いております）
-  
-* **[Facades Dataset](https://www.kaggle.com/datasets/balraj98/facades-dataset)** （本リポジトリでは、上記データセットをMatファイル形式に変換し、学習・検証用データとして使用しております）
-  （動作検証用のベースコードとして活用させていただいております。）
-
-公式ドキュメントおよび関連書籍: Docker Hub 公式イメージおよび各ライブラリ（PyTorch/TensorFlow）のリファレンスを基に、依存関係の解決を行いました。
 # ReleaseNote
 ## 2023-05-22　Version1.0-release
 * ファストコミット。
