@@ -95,7 +95,22 @@ docker-compose up -d
 
      [テスト済みのビルド構成|Tensorflow](https://www.tensorflow.org/install/source?hl=ja#gpu)
 
-1. 構成の整合性と再配布について / Configuration Integrity & Redistribution 本環境（Docker構成・依存関係の設定等）は、特定のライブラリ構成で最適化されています。この整合性を維持し、利用者の混乱を防ぐため、本環境の再配布（修正版を含む）を希望する場合は、必ず事前に作成者（Amenbo1219）へ連絡し、承諾を得てください。
+# LICENCE
+本リポジトリは MIT License のもとで公開されていますが、Docker構成や依存関係などの「Environment（環境設定）」については、動作の整合性を保つための追加利用規約があります。
+
+This repository is licensed under the MIT License, with additional terms applying specifically to the "Environment" (Docker, dependencies, etc.) to ensure technical integrity.
+
+概要 / Summary
+ソフトウェア（コード）: MITライセンスに基づき、自由に使用・改変・配布が可能です。
+
+環境設定 (Environment): 動作検証済みの構成を維持するため、再配布や改変しての公開には事前の承諾が必要です。
+
+サポート: 構成を変更された場合、動作の保証やサポートは行えません。
+
+詳細な条項については、LICENSE ファイルをご確認ください。 Please refer to the LICENSE file for the full text and additional terms
+
+## 追加条項 / Additional Terms
+1. 構成の整合性と再配布について / Configuration Integrity & Redistribution 本環境（Docker構成・依存関係の設定等）は、特定のライブラリ構成で最適化されています。この整合性を維持し、利用者の混乱を防ぐため、本環境の再配布（修正版を含む）を希望する場合は、事前に作成者（Amenbo1219）へ連絡し、承諾を得てください。
 
 The Environment (Docker configurations, dependency specifications, etc.) is meticulously optimized for specific library versions. To maintain this integrity and prevent user confusion, any redistribution of the Environment (including modified versions) requires prior coordination and written permission from the author (Amenbo1219).
 
