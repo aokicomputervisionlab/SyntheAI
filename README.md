@@ -95,28 +95,21 @@ docker-compose up -d
 
      [テスト済みのビルド構成|Tensorflow](https://www.tensorflow.org/install/source?hl=ja#gpu)
 
-# License
-本リポジトリは、MITライセンスに基づいて提供されますが、以下の**追加利用規約**が適用されます。  
-This repository is licensed under the MIT License, with the following **additional terms**.
+1. 構成の整合性と再配布について / Configuration Integrity & Redistribution 本環境（Docker構成・依存関係の設定等）は、特定のライブラリ構成で最適化されています。この整合性を維持し、利用者の混乱を防ぐため、本環境の再配布（修正版を含む）を希望する場合は、必ず事前に作成者（Amenbo1219）へ連絡し、承諾を得てください。
 
+The Environment (Docker configurations, dependency specifications, etc.) is meticulously optimized for specific library versions. To maintain this integrity and prevent user confusion, any redistribution of the Environment (including modified versions) requires prior coordination and written permission from the author (Amenbo1219).
 
+2. 動作保証の免責 / Disclaimer for Modifications 構成の変更（バージョンの変更等）が行われた場合、それは派生物とみなされ、作者は一切の動作保証およびサポートを行いません。オリジナルの構成を維持しての利用を強く推奨します。
 
+Any modification to the versioning or dependency structure is considered a "Derived Work." The author provides no guarantee of stability or support for such modified configurations. Users are strongly encouraged to maintain the original setup.
 
-## 追加条項 / Additional Terms
+3. 要請への遵守 / Compliance with Requests 承諾を得て再配布を行っている場合であっても、技術的・権利的な理由等により作成者が公開停止を要請した際は、速やかにこれに従ってください。
 
-- 再配布の制限 / Redistribution Restriction: 作成者の事前許諾なしに、本リポジトリに含まれる「Environment（Docker構成・依存関係の設定等）」の再配布・公開（二次利用を含む）を禁止します。
+Even with prior permission, you must promptly comply if the author requests the cessation of redistribution or use for any reason.
 
-Redistribution or publication of the Environment (modified or unmodified) is prohibited without prior written permission from the author.
+4. 効力発生日 / Effective Date 本追加条項は 2025年7月30日 より効力を発し、それ以前の活動については遡及適用されません。
 
-- 構成の整合性 / Configuration Integrity: 本環境は特定のライブラリ構成で動作を検証したものです。構成の変更（バージョンの変更等）を伴う利用について、作者は一切の動作保証およびサポートを行いません。
-
-要請への遵守 / Compliance with Requests: 作成者の許諾を得ている場合でも、公開停止や使用中止の要請があった際は速やかに従ってください。
-
-Even with permission, you must promptly comply if the author requests the cessation of redistribution or use.
-
-- 効力発生日 / Effective Date: 本追加条項は 2025年7月30日 より効力を発し、それ以前の再配布については適用されません（遡及適用なし）。
-
-These terms take effect from July 30, 2025, and do not apply retroactively to activities before this date.
+These terms take effect from July 30, 2025, and do not apply retroactively to activities prior to this date.
 
 # 謝辞 / Acknowledgements
 本リポジトリの開発にあたり、以下のリソースを参考にさせていただきました。
