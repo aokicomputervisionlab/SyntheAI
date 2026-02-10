@@ -3,10 +3,9 @@ TensorflowとPyTorchを誰でも簡単に利用できるように開発された
 
 # 謝辞 / Acknowledgements
 本リポジトリの開発にあたり、以下のリソースを参考にさせていただきました。
+* Lyonに関する教育用コンテンツ (東京工科大学 CS学部 大野先生)
 * [DockerでGPUが使えるJupyter環境を作る|はてなブログ: まくんごろん氏](https://makungoron-music.hatenablog.com/entry/docker-jupyter)
 * [DockerでGPUを利用するための環境構築|IDnet 技術コラム](https://www.idnet.co.jp/column/page_187.html)
-* Lyonに関する教育用コンテンツ (東京工科大学 CS学部 大野先生)
-
 
 上記のリソースはいずれも、Docker上でGPUリソースを適切に割り当て、Jupyter環境を構築する手法として非常に標準的かつ優れた知見を含んでおります。
 本リポジトリの制作にあたっては、大野先生のLyonに関する教育用コンテンツより多大な影響と着想をいただいております。これに加え、Web上で公開されている各技術資料からも多くの知見を拝借し、それらを自身の研究環境に合わせて整理・統合することで、本パッケージを形にすることができました。
