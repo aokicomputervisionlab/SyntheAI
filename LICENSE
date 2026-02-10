@@ -7,13 +7,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-Additional Provisions for "The Environment"
-While this software is provided under the MIT License, the following terms apply specifically to the Environment & Configuration (e.g., Dockerfiles, dependency specifications, and integration scripts) to ensure technical integrity:
-
-1. Configuration Integrity & Support The Environment is meticulously optimized for specific library versions. To maintain this integrity and prevent user confusion, any redistribution of the Environment (including modified versions) should be coordinated with and approved by the author (Amenbo1219) in advance.
-
-2. Disclaimer for Modifications Any modification to the dependency structure is considered a "Derived Work." The author provides no guarantee of stability for such modified configurations and encourages users to maintain the original setup.
-
-3. Compliance with Requests The author requests that you promptly comply should there be a need to ask for the cessation of redistribution or use for any reason.
-4. Effective Date These terms take effect from July 30, 2025.
