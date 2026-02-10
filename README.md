@@ -113,37 +113,21 @@ docker-compose up -d
      [テスト済みのビルド構成|Tensorflow](https://www.tensorflow.org/install/source?hl=ja#gpu)
 
 
-# LICENCE
-本リポジトリは MIT License のもとで公開されていますが、Docker構成や依存関係などの「Environment（環境設定）」については、動作の整合性を保つための追加利用規約があります。
+# LICENSE
+本リポジトリは MIT License のもとで公開されています。 This repository is licensed under the MIT License.
 
-This repository is licensed under the MIT License, with additional terms applying specifically to the "Environment" (Docker, dependencies, etc.) to ensure technical integrity.
+* 概要 / Summary
+ソフトウェア（コード） / Software: MITライセンスに基づき、自由に使用・改変・配布が可能です。
 
-概要 / Summary
-ソフトウェア（コード）: MITライセンスに基づき、自由に使用・改変・配布が可能です。
+* 環境設定 / Environment (Docker, dependencies): 構成の改変や再配布は自由ですが、作成者はその動作を保証しません。
 
-環境設定 (Environment): 動作検証済みの構成を維持するため、再配布や改変しての公開には事前の承諾が必要です。
+* サポート / Support: 構成の変更を伴う「派生物」への個別サポートは一切行いません。
+# 修正・改善の提案について / Pull Requests
+本リポジトリの構成やライブラリの依存関係に関する修正、あるいは機能改善の提案がある場合は、**プルリクエスト（Pull Request）**をお送りください。
 
-サポート: 構成を変更された場合、動作の保証やサポートは行えません。
+具体的な修正内容と意図が示されているPRについては、内容を確認し、適宜対応を検討いたします。
 
-詳細な条項については、LICENSE ファイルをご確認ください。 Please refer to the LICENSE file for the full text and additional terms
-
-## 追加条項 / Additional Terms
-1. 構成の整合性と再配布について / Configuration Integrity & Redistribution 本環境（Docker構成・依存関係の設定等）は、特定のライブラリ構成で最適化されています。この整合性を維持し、利用者の混乱を防ぐため、本環境の再配布（修正版を含む）を希望する場合は、事前に作成者（Amenbo1219）へ連絡し、承諾を得てください。
-
-The Environment (Docker configurations, dependency specifications, etc.) is meticulously optimized for specific library versions. To maintain this integrity and prevent user confusion, any redistribution of the Environment (including modified versions) requires prior coordination and written permission from the author (Amenbo1219).
-
-2. 動作保証の免責 / Disclaimer for Modifications 構成の変更（バージョンの変更等）が行われた場合、それは派生物とみなされ、作者は一切の動作保証およびサポートを行いません。オリジナルの構成を維持しての利用を強く推奨します。
-
-Any modification to the versioning or dependency structure is considered a "Derived Work." The author provides no guarantee of stability or support for such modified configurations. Users are strongly encouraged to maintain the original setup.
-
-3. 要請への遵守 / Compliance with Requests 承諾を得て再配布を行っている場合であっても、技術的・権利的な理由等により作成者が公開停止を要請した際は、速やかにこれに従ってください。
-
-Even with prior permission, you must promptly comply if the author requests the cessation of redistribution or use for any reason.
-
-4. 効力発生日 / Effective Date 本追加条項は 2025年7月30日 より効力を発し、それ以前の活動については遡及適用されません。
-
-These terms take effect from July 30, 2025, and do not apply retroactively to activities prior to this date.
-
+PRを伴わない個別の動作不良に関するご相談や、環境構築のサポート依頼については、対応いたしかねますのであらかじめご了承ください。
 
 # ReleaseNote
 ## 2023-05-22　Version1.0-release
@@ -181,20 +165,25 @@ These terms take effect from July 30, 2025, and do not apply retroactively to ac
 ## 2025-07-29　Version2.0.b-release
 * レポジトリの変更
 * README.mdを更新しました．
-
 ## 2025-07-30　LICENSE-release
 * [重要]本レポジトリの権利を保証するためLICENSEを設けました．詳細はLICENSEを御覧ください．
 * ディープラーニング学習中に利用者が途中でブラウザを閉じてもプログラムが終了しないように設定を変更しました．
 * README.mdを更新しました．
-
 ## 2026-02-06　LICENSE-update
 * [重要]制限の適用範囲を明確にするため条項を改訂しました.以前のバージョンではサードパーティのコードに対しても制限が適用されると解釈されかねない記述が含まれていましたが, 今回の修正により, 独自構成（Environment）と第三者のコードを明確に分離しました. これは法的透明性の確保と権利関係の適正化を目的としています.
 * README.mdを更新しました．
-
 ## 2026-02-10　LICENSE-Update・DockerfileCleanUp
-* ライセンスの定義をMIT基準に緩和し,　二次配布の際には作成者に依存関係を解消するために相談してほしい旨に変更いたしました.
-* Dockerfileの内容を一部修正し, コメントも修正しました. 
-* README.mdを更新しました．
+* ライセンスの緩和と運用方針の変更
+  
+権利不備に関するご指摘を真摯に受け止め、ライセンス定義を MIT基準 へと緩和・再定義いたしました。
+動作要件の確認や環境改善のご要望については、プルリクエスト（PR） を通じたオープンな開発体制へと移行いたしました。
+* Dockerfile & README メンテナンス
+  
+Dockerfileの構成を一部最適化し、コメントを最新の情報へ修正しました。
+README.mdに「謝辞（Acknowledgements）」および「外部リファレンス」を追記しました。
+* お詫び
+  
+本件において、不適切なライセンス設定や表記によりご不安・ご迷惑をおかけした皆様に、深くお詫び申し上げます。今後は透明性の高い開発・管理に努めてまいります。
   
 # Author
 
