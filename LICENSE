@@ -1,20 +1,13 @@
-MIT License with Specific Scopes and Terms
-Effective Date: 2025-07-30 Copyright (c) 2025 Amenbo1219
+MIT License
+(Standard MIT License text goes here)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, and run the Software, subject to the following conditions:
+Additional Provisions for "The Environment"
+While this software is provided under the MIT License, the following terms apply specifically to the Environment & Configuration (e.g., Dockerfiles, dependency specifications, and integration scripts) to ensure technical integrity:
 
-1. Scope of Licenses
-Third-Party Code: Any TensorFlow tutorial code or third-party libraries included in this repository remain subject to their original licenses (e.g., Apache License 2.0).
+1. Configuration Integrity & Support The Environment is meticulously optimized for specific library versions. Any modification to the versioning or dependency structure is considered a "Derived Work." The author (Amenbo1219) provides no guarantee of stability or support for such modified configurations. Users are strongly encouraged to maintain the original configuration to ensure expected performance.
 
-Original Environment & Configuration: The Docker configurations, dependency specifications (requirements.txt), and the specific integration of these components (collectively, the "Environment") are provided by Amenbo1219.
+2. Redistribution & Communication To prevent the fragmentation of this environment and minimize user confusion, the author strongly requests that you provide prior notification before redistributing this Environment or any modified versions thereof.
 
-2. Additional Terms for the Environment
-The following conditions apply to the redistribution and use of the Environment and its specific library configurations:
+3. Attribution Requirement Any permitted redistribution or public display of this Environment must include a clear credit to the original author (Amenbo1219) and a link to this repository.
 
-Redistribution Restriction: Redistribution of the Environment (including modified versions) is not permitted without prior written permission from the original author (Amenbo1219).
-
-Configuration Integrity & Support: This Environment is optimized for specific library versions. Any modification to the versioning or dependency structure constitutes a "Derived Work." The author provides no guarantee of stability or support for such modified configurations.
-
-Attribution: Any permitted redistribution or public display of this setup must include a clear credit to the original author and a link to this repository.
-
-Revocation: If the author requests the takedown or revocation of a redistribution for any reason, the user must comply promptly.
+4. Revocation of Distribution The author reserves the right to request the cessation of any redistribution that significantly compromises the integrity or reputation of the original Environment.
