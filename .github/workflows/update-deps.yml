@@ -24,30 +24,28 @@ jobs:
       - name: Update requirements and README
         working-directory: py3
         run: |
-          # 1. Backup old requirements
-          cp requirements.txt requirements.txt.bak || touch requirements.txt.bak
+          # 1. Move and backup (using -f to ignore error if not exists)
+          cp -f requirements.txt requirements.txt.bak || touch requirements.txt.bak
           
-          # 2. Upgrade dependencies
+          # 2. Run pip-compile (Upgrade)
           pip-compile --upgrade requirements.in --output-file requirements.txt
           
-          # 3. Generate Diff
+          # 3. Calculate Diff and create temporary message file
           DIFF=$(diff requirements.txt.bak requirements.txt | grep ">" | sed 's/> //' || true)
           
           if [ -n "$DIFF" ]; then
             DATE=$(date +'%Y-%m-%d')
-            # 4. Create a temporary message file (This avoids "sed" escaping hell)
-            echo "### Updated on $DATE" > msg.tmp
-            echo '```' >> msg.tmp
-            echo "$DIFF" >> msg.tmp
-            echo '```' >> msg.tmp
-            echo "" >> msg.tmp
+            # Create a clean message file
+            echo -e "\n### Updated on $DATE\n\`\`\`\n$DIFF\n\`\`\`" > msg.tmp
             
-            # 5. Inject the message file into README.md using the 'r' command
-            # This reads msg.tmp and appends it after the tag
-            sed -i "//r msg.tmp" ../README.md
+            # 4. INJECT using 'r' command
+            # This inserts the ENTIRE content of msg.tmp after the tag
+            # We use the exact tag: sed -i "//r msg.tmp" ../README.md
             
             # Clean up
             rm msg.tmp
+          else
+            echo "No updates found. Skipping README update."
           fi
       - name: Verify Environment (GPU & OpenCV)
         working-directory: py3
@@ -58,7 +56,7 @@ jobs:
           # 2. Test PyTorch GPU access
           echo "Testing PyTorch..."
           python3 -c "import torch; print(f'PyTorch GPU: {torch.cuda.is_available()}'); assert torch.cuda.is_available(), 'PyTorch cannot see GPU!'"
-          
+          python3 -c "import torch; x = torch.ones(1).cuda(); print(f'GPU computing: {x + x}')"
           # 3. Test TensorFlow GPU access
           echo "Testing TensorFlow..."
           python3 -c "import tensorflow as tf; gpus = tf.config.list_physical_devices('GPU'); print(f'TF GPUs: {gpus}'); assert len(gpus) > 0, 'TensorFlow cannot see GPU!'"
