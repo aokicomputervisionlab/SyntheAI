@@ -10,7 +10,7 @@ jobs:
     runs-on: self-hosted
     container:
       image: nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
-      options: --gpus all --shm-size=8gb
+      options: --gpus all --shm-size=8gb　--network host
     
     steps:
       - name: Checkout Code
