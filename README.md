@@ -1,5 +1,6 @@
-# SyntheAI：PyTorch & TensorFlow Unified Development Environment（旧：Lyon-env）　version:2.1.a
-TensorflowとPyTorchを誰でも簡単に利用できるように開発された，Notebook形式のAI開発・研究環境です．元来Lyon環境での利用を想定していましたが, Lyon以外での環境にも利用可能に変更いたしました. 
+# SyntheAI：PyTorch & TensorFlow Unified Development Environment　version:3.0.a
+TensorflowとPyTorchを誰でも簡単に利用できるように開発された，Notebook形式のAI開発・研究環境です．元来東京工科大学Lyon環境での利用を想定していましたが, Lyon以外での環境にも利用可能に変更いたしました. 
+## 依存関係の更新履歴
 
 # 謝辞 / Acknowledgements
 本リポジトリの開発にあたり、以下のリソースを参考にさせていただきました。
@@ -184,6 +185,11 @@ README.mdに「謝辞（Acknowledgements）」および「外部リファレン�
 * お詫び
   
 本件において、不適切なライセンス設定や表記によりご不安・ご迷惑をおかけした皆様に、深くお詫び申し上げます。今後は透明性の高い開発・管理に努めてまいります。
+
+## 2026-02-13　ライブラリ自動更新機能の導入
+*　ライブラリを自動で更新する機能を導入しました。
+
+
   
 # Author
 
