@@ -1,0 +1,59 @@
+name: Auto Dependency Update
+
+on:
+  schedule:
+    - cron: '0 0 1 1,4,7,10 *' # 1,4,7,10月の1日 00:00
+  workflow_dispatch:
+
+jobs:
+  update-requirements:
+    runs-on: self-hosted
+    container:
+      image: nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
+      options: --gpus all --shm-size=8gb
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Python and pip-tools
+        run: |
+          apt-get update && apt-get install -y python3-pip
+          python3 -m pip install pip-tools
+
+      - name: Update requirements and README
+        run: |
+          # BackUp Requirements
+          cp requirements.txt requirements.txt.bak || touch requirements.txt.bak
+          
+          # Calc dependencies
+          pip-compile --upgrade requirements.in --output-file requirements.txt
+          
+          # Diff Update
+          DIFF=$(diff requirements.txt.bak requirements.txt | grep ">" | sed 's/> //' || true)
+          
+          if [ -n "$DIFF" ]; then
+            DATE=$(date +'%Y-%m-%d')
+            UPDATE_MSG="### Updated on $DATE\n\`\`\`\n$DIFF\n\`\`\`\n"
+            
+            # README.md の の直後にメッセージを挿入
+            # ※事前にREADMEにこのコメントを入れておいてください
+            sed -i "//a $UPDATE_MSG" README.md
+          fi
+
+      # Permissions Update
+      - name: Fix Permissions for Rootless
+        run: chown -R $(id -u):$(id -g) .
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: update requirements.txt and README"
+          title: "依存ライブラリとREADMEの定期更新"
+          body: |
+            `pip-compile` によって依存関係が最新化されました。
+            README.md に更新内容を追記しています。
+            動作確認後にマージしてください。
+          branch: "auto-update-dependencies"
+          delete-branch: true
