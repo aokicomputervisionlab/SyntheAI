@@ -1,0 +1,13 @@
+name: Runner GPU Check
+
+on: workflow_dispatch # 手動でボタンを押した時だけ実行
+
+jobs:
+  check-gpu:
+    runs-on: self-hosted
+    container:
+      image: nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
+      options: --gpus all
+    steps:
+      - name: Check NVIDIA SMI
+        run: nvidia-smi
