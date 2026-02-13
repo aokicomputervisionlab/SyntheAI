@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.17.0-gpu
+FROM nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
 
 # TimeZone　Setup
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
@@ -20,8 +20,6 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt /install/requirements.txt
 RUN pip install --upgrade pip
 RUN pip install -r /install/requirements.txt
-# Install for PyTorch Library
-RUN pip install torch==2.4.1+cu121 torchvision==0.19.1+cu121 torchaudio==2.4.1+cu121 --index-url https://download.pytorch.org/whl/cu121
 
 # Tensorflow Log Level Setup(Delete Warning Message)
 ENV TF_CPP_MIN_LOG_LEVEL=2
