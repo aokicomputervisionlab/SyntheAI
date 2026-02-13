@@ -22,25 +22,32 @@ jobs:
           python3 -m pip install pip-tools
 
       - name: Update requirements and README
-        working-directory: ./py3
+        working-directory: py3
         run: |
-          # 1. Create a backup for comparison (handle case where file doesn't exist)
+          # 1. Backup old requirements
           cp requirements.txt requirements.txt.bak || touch requirements.txt.bak
           
-          # 2. Upgrade dependencies and generate new requirements.txt
+          # 2. Upgrade dependencies
           pip-compile --upgrade requirements.in --output-file requirements.txt
           
-          # 3. Extract differences (newly added or updated packages)
+          # 3. Generate Diff
           DIFF=$(diff requirements.txt.bak requirements.txt | grep ">" | sed 's/> //' || true)
           
           if [ -n "$DIFF" ]; then
             DATE=$(date +'%Y-%m-%d')
-            # 4. Format the update message with a code block
-            UPDATE_MSG="### Updated on $DATE\n\`\`\`\n$DIFF\n\`\`\`\n"
+            # 4. Create a temporary message file (This avoids "sed" escaping hell)
+            echo "### Updated on $DATE" > msg.tmp
+            echo '```' >> msg.tmp
+            echo "$DIFF" >> msg.tmp
+            echo '```' >> msg.tmp
+            echo "" >> msg.tmp
             
-            # 5. Insert the message after the tag in the root README.md
-            # Ensure "" exists in your README.md
-            sed -i "//a $UPDATE_MSG" ../README.md
+            # 5. Inject the message file into README.md using the 'r' command
+            # This reads msg.tmp and appends it after the tag
+            sed -i "//r msg.tmp" ../README.md
+            
+            # Clean up
+            rm msg.tmp
           fi
       - name: Verify Environment (GPU & OpenCV)
         working-directory: py3
