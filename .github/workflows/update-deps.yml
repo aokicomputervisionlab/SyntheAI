@@ -22,25 +22,23 @@ jobs:
           python3 -m pip install pip-tools
 
       - name: Update requirements and README
+        working-directory: ./py3
         run: |
-          # 1. Move to the directory containing requirements files
-          cd py3
-          
-          # 2. Create a backup for comparison (handle case where file doesn't exist)
+          # 1. Create a backup for comparison (handle case where file doesn't exist)
           cp requirements.txt requirements.txt.bak || touch requirements.txt.bak
           
-          # 3. Upgrade dependencies and generate new requirements.txt
+          # 2. Upgrade dependencies and generate new requirements.txt
           pip-compile --upgrade requirements.in --output-file requirements.txt
           
-          # 4. Extract differences (newly added or updated packages)
+          # 3. Extract differences (newly added or updated packages)
           DIFF=$(diff requirements.txt.bak requirements.txt | grep ">" | sed 's/> //' || true)
           
           if [ -n "$DIFF" ]; then
             DATE=$(date +'%Y-%m-%d')
-            # 5. Format the update message with a code block
+            # 4. Format the update message with a code block
             UPDATE_MSG="### Updated on $DATE\n\`\`\`\n$DIFF\n\`\`\`\n"
             
-            # 6. Insert the message after the tag in the root README.md
+            # 5. Insert the message after the tag in the root README.md
             # Ensure "" exists in your README.md
             sed -i "//a $UPDATE_MSG" ../README.md
           fi
