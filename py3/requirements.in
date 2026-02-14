@@ -76,6 +76,7 @@ joblib
 
 # --- Jupyter & Interactive Development ---
 jupyterlab
+japanize-matplotlib
 ipykernel
 ipywidgets
 ipython-sql
