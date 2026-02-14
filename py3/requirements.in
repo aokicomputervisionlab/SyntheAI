@@ -17,9 +17,10 @@ nvidia-nvjitlink-cu12 < 0
 torch==2.4.0+cu118
 torchvision==0.19.0+cu118
 torchaudio==2.4.0+cu118
-xformers
+xformers==0.0.22.post7
 triton
 tensorflow<2.16
+nvidia-cudnn-cu11==8.9.7.29
 keras
 jax[cuda11_pip]==0.4.23
 jaxlib==0.4.23+cuda11.cudnn86
@@ -35,7 +36,7 @@ peft
 controlnet-aux
 ftfy
 einops
-onnxruntime-gpu
+onnxruntime-gpu==1.17.1
 
 # --- Data Science & Advanced Analytics ---
 numpy
