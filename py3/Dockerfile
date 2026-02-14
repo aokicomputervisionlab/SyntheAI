@@ -1,4 +1,5 @@
-FROM nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
+
 
 # TimeZone　Setup
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
