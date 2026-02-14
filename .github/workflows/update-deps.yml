@@ -16,9 +16,22 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Install Python and pip-tools
+      - name: Install System Dependencies
         run: |
-          apt-get update && apt-get install -y python3-pip
+          apt-get update && apt-get install -y \
+            python3-pip \
+            tzdata \
+            git \
+            wget \
+            ffmpeg \
+            libglib2.0-0 \
+            libsm6 \
+            libxrender1 \
+            libxext6 \
+            libgl1-mesa-dev
+          
+          # pip-toolssetup
+          python3 -m pip install --upgrade pip
           python3 -m pip install pip-tools
 
       - name: Update requirements and README
