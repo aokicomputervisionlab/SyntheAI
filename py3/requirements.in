@@ -10,8 +10,8 @@ torchvision==0.19.0+cu118
 torchaudio==2.4.0+cu118
 xformers
 triton
-tensorflow<2.16
-keras
+tensorflow==2.15.0
+keras==2.15.0
 jax[cuda11_pip]==0.4.23
 jaxlib==0.4.23+cuda11.cudnn86
 flax
