@@ -1,4 +1,4 @@
-# SyntheAI：PyTorch & TensorFlow Unified Development Environment（旧：Lyon-env）　version:2.1.a
+# SyntheAI：PyTorch & TensorFlow Unified Development Environment（旧：Lyon-env）　version:2.0.2-final
 TensorflowとPyTorchを誰でも簡単に利用できるように開発された，Notebook形式のAI開発・研究環境です．元来Lyon環境での利用を想定していましたが, Lyon以外での環境にも利用可能に変更いたしました. 
 
 # 謝辞 / Acknowledgements
