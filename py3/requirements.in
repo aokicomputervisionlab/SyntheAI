@@ -1,5 +1,5 @@
-# --- Index URL for PyTorch (CUDA 12.1) ---
---extra-index-url https://download.pytorch.org/whl/cu121
+# --- Index URL for PyTorch (CUDA 11.8) ---
+--extra-index-url https://download.pytorch.org/whl/cu118
 
 # --- Core Deep Learning Frameworks ---
 torch
