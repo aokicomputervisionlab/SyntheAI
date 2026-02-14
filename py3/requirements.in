@@ -42,7 +42,7 @@ numexpr
 bottleneck
 
 # --- Gradient Boosting (The Big 3) ---
-xgboost
+xgboost<2.0.0
 lightgbm
 catboost
 
