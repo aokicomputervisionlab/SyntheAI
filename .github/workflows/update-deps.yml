@@ -9,7 +9,7 @@ jobs:
   update-requirements:
     runs-on: self-hosted
     container:
-      image: nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
+      image: nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
       options: --gpus all --shm-size=8589934592
       env:
         TZ: Asia/Tokyo
@@ -76,7 +76,6 @@ jobs:
           # 3. Test TensorFlow GPU access
           echo "--- Testing TensorFlow ---"
           python3 -c "import tensorflow as tf; gpus = tf.config.list_physical_devices('GPU'); print(f'TF GPUs: {gpus}'); assert len(gpus) > 0, 'TensorFlow cannot see GPU!'"
-          # 実際に簡単な行列演算をGPUで実行
           python3 -c "import tensorflow as tf; with tf.device('/GPU:0'): x = tf.ones([1]); print(f'TF computing: {x + x}')"
           
           # 4. Test JAX GPU access
@@ -86,7 +85,8 @@ jobs:
 
           # 5. Test OpenCV import
           echo "--- Testing OpenCV ---"
-          python3 -c "import cv2; print(f'OpenCV Version: {cv2.__version__}')"      # Permissions Update
+          python3 -c "import cv2; print(f'OpenCV Version: {cv2.__version__}')"      
+      # Permissions Update
       - name: Fix Permissions for Rootless
         run: chown -R $(id -u):$(id -g) .
 
