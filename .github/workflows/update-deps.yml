@@ -73,7 +73,8 @@ jobs:
           rm -rf /usr/local/lib/python3.10/dist-packages/nvidia/*-cu12
           
           # 3. Setting CUDA11.8
-          export LD_LIBRARY_PATH=/usr/local/lib/python3.10/dist-packages/nvidia/cudnn/lib:/usr/local/lib/python3.10/dist-packages/nvidia/cublas/lib:$LD_LIBRARY_PATH# 2. Test PyTorch GPU access
+          export LD_LIBRARY_PATH=/usr/local/lib/python3.10/dist-packages/nvidia/cudnn/lib:/usr/local/lib/python3.10/dist-packages/nvidia/cublas/lib:/usr/local/lib/python3.10/dist-packages/nvidia/cuda_runtime/lib:$LD_LIBRARY_PATH
+          export XLA_FLAGS=--xla_gpu_cuda_data_dir=/usr/local/lib/python3.10/dist-packages/nvidia/cuda_runtime
           # 4.TESTCODE
           echo "--- Testing PyTorch ---"
           python3 -c "import torch; print(f'PyTorch GPU: {torch.cuda.is_available()}'); assert torch.cuda.is_available(), 'PyTorch cannot see GPU!'"
