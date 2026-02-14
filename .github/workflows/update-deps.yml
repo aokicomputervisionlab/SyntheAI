@@ -4,7 +4,8 @@ on:
   schedule:
     - cron: '0 0 1 1,4,7,10 *' # 1,4,7,10月の1日 00:00
   workflow_dispatch:
-
+permissions:
+  contents: write
 jobs:
   update-requirements:
     runs-on: self-hosted
@@ -43,7 +44,7 @@ jobs:
           cp -f requirements.txt requirements.txt.bak || touch requirements.txt.bak
           
           # 2. Run pip-compile (Upgrade)
-          pip-compile --upgrade requirements.in --output-file requirements.txt
+          pip-compile --strip-extras --upgrade requirements.in --output-file requirements.txt
           
           # 3. Calculate Diff and create temporary message file
           DIFF=$(diff requirements.txt.bak requirements.txt | grep ">" | sed 's/> //' || true)
@@ -56,7 +57,7 @@ jobs:
             # 4. INJECT using 'r' command
             # This inserts the ENTIRE content of msg.tmp after the tag
             # We use the exact tag: sed -i "//r msg.tmp" ../README.md
-            
+            sed -i "/## 依存関係の更新履歴/r msg.tmp" ../README.md
             # Clean up
             rm msg.tmp
           else
@@ -80,7 +81,7 @@ jobs:
           
           # 4. Test JAX GPU access
           echo "--- Testing JAX ---"
-          python3 -c "import jax; print(f'JAX Devices: {jax.devices()}'); assert any('gpu' in str(d).lower() for d in jax.devices()), 'JAX cannot see GPU!'"
+          python3 -c "import jax; print(f'JAX backend: {jax.lib.xla_bridge.get_backend().platform}'); print(f'JAX Devices: {jax.devices()}'); assert jax.lib.xla_bridge.get_backend().platform == 'gpu'"
           python3 -c "import jax.numpy as jnp; x = jnp.ones((1,)); print(f'JAX computing: {x + x}')"
 
           # 5. Test OpenCV import
@@ -90,15 +91,16 @@ jobs:
       - name: Fix Permissions for Rootless
         run: chown -R $(id -u):$(id -g) .
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore: update requirements.txt and README"
-          title: "依存ライブラリとREADMEの定期更新"
-          body: |
-            `pip-compile` によって依存関係が最新化されました。
-            README.md に更新内容を追記しています。
-            動作確認後にマージしてください。
-          branch: "auto-update-dependencies"
-          delete-branch: true
+      - name: Commit and Push if changed
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          # fille PUSH PROCESS
+          git add py3/requirements.txt README.md
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: 依存ライブラリとREADMEを自動更新 ($(date +'%Y-%m-%d'))"
+            git push
+            echo "Changes pushed to repository."
+          else
+            echo "No changes to commit."
+          fi
