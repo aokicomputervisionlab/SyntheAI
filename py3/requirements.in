@@ -1,14 +1,25 @@
 # --- Index URL CUDA 11.8 (JAX/PyTorch) ---
---extra-index-url https://download.pytorch.org/whl/cu118
---find-links https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
-
+--index-url https://download.pytorch.org/whl/cu118
+--extra-index-url https://pypi.org/simple
+--extra-index-url https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+nvidia-cublas-cu12 < 0
+nvidia-cuda-cupti-cu12 < 0
+nvidia-cuda-nvrtc-cu12 < 0
+nvidia-cuda-runtime-cu12 < 0
+nvidia-cudnn-cu12 < 0
+nvidia-cufft-cu12 < 0
+nvidia-curand-cu12 < 0
+nvidia-cusolver-cu12 < 0
+nvidia-cusparse-cu12 < 0
+nvidia-nccl-cu12 < 0
+nvidia-nvjitlink-cu12 < 0
 # --- Core Deep Learning Frameworks ---
-torch
-torchvision
-torchaudio
+torch==2.4.0+cu118
+torchvision==0.19.0+cu118
+torchaudio==2.4.0+cu118
 xformers
 triton
-tensorflow
+tensorflow<2.16
 keras
 jax[cuda11_pip]==0.4.23
 jaxlib==0.4.23+cuda11.cudnn86
