@@ -1,6 +1,6 @@
-# --- Index URL for PyTorch (CUDA 11.8) ---
+# --- Index URL CUDA 11.8 (JAX/PyTorch) ---
 --extra-index-url https://download.pytorch.org/whl/cu118
-
+--find-links https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 # --- Core Deep Learning Frameworks ---
 torch
 torchvision
@@ -9,7 +9,8 @@ xformers
 triton
 tensorflow
 keras
-jax[cuda11_pip]
+jax[cuda11_pip]==0.4.23
+jaxlib==0.4.23+cuda11.cudnn86
 flax
 optax
 
