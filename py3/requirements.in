@@ -9,7 +9,7 @@ xformers
 triton
 tensorflow
 keras
-jax[cuda12_pip]
+jax[cuda11_pip]
 flax
 optax
 
