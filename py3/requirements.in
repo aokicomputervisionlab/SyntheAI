@@ -17,8 +17,8 @@ xformers
 triton
 tensorflow
 keras
-jax[cuda11_pip]>=0.4.23,<0.5.0
-jaxlib>=0.4.23,<0.5.0
+jax[cuda11_pip]==0.4.23
+jaxlib==0.4.23+cuda11.cudnn86
 flax
 optax
 
