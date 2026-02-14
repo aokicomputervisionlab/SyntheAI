@@ -1,7 +1,8 @@
 FROM nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
 
 # TimeZone　Setup
-RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+ENV DEBIAN_FRONTEND=noninteractive TZ=Asia/Tokyo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Base Environment Setup
 RUN apt-get update && apt-get install -y \ 
