@@ -11,7 +11,9 @@ jobs:
     container:
       image: nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
       options: --gpus all --shm-size=8589934592
-    
+      env:
+        TZ: Asia/Tokyo
+        DEBIAN_FRONTEND: noninteractive
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
