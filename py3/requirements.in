@@ -3,15 +3,6 @@
 --extra-index-url https://pypi.org/simple
 --find-links https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 
-# ---GPU CUDA118 INIT----
-nvidia-cuda-runtime-cu11>=11.8
-nvidia-cublas-cu11>=11.11
-nvidia-cudnn-cu11>=8.9
-nvidia-cufft-cu11>=10.9
-nvidia-curand-cu11>=10.3
-nvidia-cusolver-cu11>=11.4
-nvidia-cusparse-cu11>=11.7
-nvidia-nccl-cu11>=2.19
 
 # --- Core Deep Learning Frameworks ---
 torch==2.4.0+cu118
