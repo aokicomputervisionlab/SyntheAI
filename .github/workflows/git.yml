@@ -1,0 +1,35 @@
+name: Debug Commit and Push
+
+on:
+  workflow_dispatch: # ボタンをポチって実行
+
+jobs:
+  debug-push-job:
+    runs-on: self-hosted
+    # 【重要】ここには container: を書かない
+    # ホストOSにインストールされている Git をそのまま使います
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          # 直接Pushするために権限を維持する
+          persist-credentials: true
+
+      - name: Make Dummy Changes
+        run: |
+          # テスト用にファイルを書き換える
+          mkdir -p py3
+          echo "# Last debug: $(date)" >> py3/requirements.txt
+          echo "" >> README.md
+          echo "Dummy changes made for debugging push."
+
+      - name: Auto Commit and Push
+        # このActionをコンテナ外（ホスト）で動かします
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: 依存ライブラリとREADMEを自動更新 (Hybrid Flow Debug)"
+          file_pattern: 'py3/requirements.txt README.md'
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com
+          
