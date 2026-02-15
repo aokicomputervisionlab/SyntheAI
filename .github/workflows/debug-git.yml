@@ -1,50 +1,34 @@
-name: Debug Git Push
+name: Debug Auto Push Test
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # 手動実行ボタン用
 
 jobs:
-  debug-git:
+  debug-push:
     runs-on: self-hosted
     container:
-      image: tensorflow/tensorflow:2.15.0.post1-gpu # 同じ環境でテスト
+      # Gitが入っていない例のTFイメージをあえて使います
+      image: tensorflow/tensorflow:2.15.0.post1-gpu 
     
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        # Git Actionを使う場合は、ここで権限を永続化しておくのがコツです
         with:
-          fetch-depth: 0 # 全履歴と .git を確実に持ってくる
+          persist-credentials: true
 
-      - name: Inspect Environment
+      - name: Modify File in Container
         run: |
-          echo "Current User: $(whoami)"
-          echo "Current Directory: $(pwd)"
-          echo "Workspace: $GITHUB_WORKSPACE"
-          echo "Listing all files (including hidden):"
-          ls -la
-          # .git フォルダの有無を再確認
-          [ -d ".git" ] && echo ".git folder exists!" || echo "STILL NO .GIT FOLDER!"
-
-      - name: Try Git Config and Commit
-        run: |
-          # 1. コンテナ内での Git 権限エラーを力技で突破
-          git config --global --add safe.directory '*'
+          # Gitがなくてもできる「ファイル書き換え」だけを実行
+          DATE=$(date +'%Y-%m-%d %H:%M:%S')
+          echo "Last debug run: $DATE" > debug_log.txt
+          echo "Container check: I don't have git, but I can write files!"
           
-          # 2. ユーザー設定
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-
-          # 3. ダミーの変更を加えてテスト（READMEに空行を追加）
-          echo "" >> README.md
-          
-          # 4. Git 動作確認
-          git status
-          git add README.md
-          
-          if ! git diff --staged --quiet; then
-            git commit -m "debug: git push test from container"
-            git push
-            echo "Push success!"
-          else
-            echo "No changes detected."
-          fi
+      - name: Auto Commit and Push
+        # 【ここが魔法】コンテナの中のGitは使わず、Action側がプッシュを代行します
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "debug: container file update test (${{ github.run_number }})"
+          file_pattern: 'debug_log.txt'
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com
