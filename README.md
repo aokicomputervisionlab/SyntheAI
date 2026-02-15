@@ -1,21 +1,21 @@
-# SyntheAI： PyTorch, TensorFlow and JAX Unified Development Environment　version:3.0.a
+# SyntheAI： PyTorch, TensorFlow and JAX Unified Development Environment version:3.0.a
 TensorflowとPyTorchを誰でも簡単に利用できるように開発された，Notebook形式のAI開発・研究環境です．元来東京工科大学Lyon環境での利用を想定していましたが, Lyon以外での環境にも利用可能に変更いたしました. 
 ## 依存関係の更新履歴
 
 # Version:3.0.a-Release🎉🎉
 SynthAIがメジャーバージョンアップしました!!
-* JAXの需要が非常に増えておりJAXライブラリにデフォルトで対応しました。デモコードも近日配布します。
-* 自動ライブラリ更新機能をリリースしました！自動で依存関係を調査し、必要であれば更新します。
+* JAXの需要に答えるため、JAX環境も利用できるようになりました。デモコードは近日配布します。
+* ライブラリの自動更新機能をリリースしました！自動で依存関係を調査し、必要であれば更新します。
 * 自動化に伴い内部のコードを調整しました。
 
 
 # 謝辞 / Acknowledgements
 本リポジトリの開発にあたり、以下のリソースを参考にさせていただきました。
-* Lyonに関する教育用コンテンツ (東京工科大学 CS学部 大野先生)
+* Lyonに関する教育用コンテンツ |東京工科大学 大野先生
 * [DockerでGPUが使えるJupyter環境を作る|はてなブログ: まくんごろん氏](https://makungoron-music.hatenablog.com/entry/docker-jupyter)
 * [DockerでGPUを利用するための環境構築|IDnet 技術コラム](https://www.idnet.co.jp/column/page_187.html)
 
-上記のリソースはいずれも、Docker上でGPUリソースを適切に割り当て、Jupyter環境を構築する手法として非常に標準的かつ優れた知見を含んでおります。
+上記のリソースはいずれも、Docker上でGPUリソースを適切に割り当て、Jupyter環境を構築する手法として優れた知見を含んでおります。
 本リポジトリの制作にあたっては、大野先生のLyonに関する教育用コンテンツより多大な影響と着想をいただいております。これに加え、Web上で公開されている各技術資料からも多くの知見を拝借し、それらを自身の研究環境に合わせて整理・統合することで、本パッケージを形にすることができました。
 貴重な知見を惜しみなく公開されている各氏に、心より感謝申し上げます。
 
@@ -23,12 +23,12 @@ SynthAIがメジャーバージョンアップしました!!
   
 * **[PyTorch Tutorials - Neural Networks](https://docs.pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html)** （PyTorch環境の動作確認用サンプルとして引用しております）
   
-* **[CycleGAN (Unpaired Image-to-Image Translation)](https://github.com/junyanz/CycleGAN)** （本リポジトリでは、上記アルゴリズムを基に、佐々木氏 (sasakirh@stf.teu.ac.jp) が実装したものを用いております）
+* **[CycleGAN (Unpaired Image-to-Image Translation)](https://github.com/junyanz/CycleGAN)** （本リポジトリでは、上記アルゴリズムを基に、東京工科大学 佐々木氏 (sasakirh@stf.teu.ac.jp) が実装したものを用いております）
   
 * **[Facades Dataset](https://www.kaggle.com/datasets/balraj98/facades-dataset)** （本リポジトリでは、上記データセットをMatファイル形式に変換し、学習・検証用データとして使用しております）
   （動作検証用のベースコードとして活用させていただいております。）
 
-公式ドキュメントおよび関連書籍: Docker Hub 公式イメージおよび各ライブラリ（PyTorch/TensorFlow）のリファレンスを基に、依存関係の解決を行いました。
+公式ドキュメントおよび関連書籍: Docker Hub公式イメージおよび各ライブラリ（PyTorch/TensorFlow）のリファレンスを基に、依存関係の解決を行いました。
 
 # Requirement
 
@@ -131,7 +131,7 @@ docker-compose up -d
 
 * サポート / Support: 構成の変更を伴う「派生物」への個別サポートは一切行いません。
 # 修正・改善の提案について / Pull Requests
-本リポジトリの構成やライブラリの依存関係に関する修正、あるいは機能改善の提案がある場合は、**プルリクエスト（Pull Request）**をお送りください。
+本リポジトリの構成やライブラリの依存関係に関する修正、あるいは機能改善の提案がある場合は、**プルリクエスト（Pull Request**をお送りください。
 
 具体的な修正内容と意図が示されているPRについては、内容を確認し、適宜対応を検討いたします。
 
@@ -189,7 +189,9 @@ README.mdに「謝辞（Acknowledgements）」を追記しました。
 本件において、不適切なライセンス設定や表記によりご不安・ご迷惑をおかけした皆様に、深くお詫び申し上げます。今後は透明性の高い開発・管理に努めてまいります。
 
 ## 2026-02-13　Version3.0.a-release
-*　ライブラリを自動で更新する機能を導入しました。クオーターごとに自動更新が走るようになります。
+* ライブラリを自動で更新する機能を導入しました。クオーターごとに自動更新が走るようになります。
+* GoogleのAI用開発ライブラリJAXが利用できるようになりました。
+
 
 
   

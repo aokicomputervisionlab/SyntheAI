@@ -1,7 +1,7 @@
-# --- Index URL CUDA 11.8 (JAX/PyTorch) ---
 --index-url https://download.pytorch.org/whl/cu118
 --extra-index-url https://pypi.org/simple
 --find-links https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+
 
 
 # --- Core Deep Learning Frameworks ---
@@ -10,13 +10,15 @@ torchvision==0.19.0+cu118
 torchaudio==2.4.0+cu118
 xformers
 triton
-tensorflow<2.16
-keras
+#tensorflow[and-cuda]==2.15.1
+nvidia-cudnn-cu11
+nvidia-cublas-cu11
+keras<3.0
 jax[cuda11_pip]==0.4.23
 jaxlib==0.4.23+cuda11.cudnn86
 flax
 optax
-
+six
 # --- Generative AI & Diffusion Models ---
 diffusers
 transformers
@@ -29,7 +31,7 @@ einops
 onnxruntime-gpu==1.17.1
 
 # --- Data Science & Advanced Analytics ---
-numpy
+numpy<2.0.0
 pandas
 polars
 pyarrow
@@ -40,6 +42,7 @@ sklearn-pandas
 mlxtend
 numexpr
 bottleneck
+protobuf<4.22.0
 
 # --- Gradient Boosting (The Big 3) ---
 xgboost<2.0.0
@@ -90,7 +93,6 @@ plotly
 # --- Data Acquisition & APIs ---
 pandas-gbq
 pandas-datareader
-yfinance
 kaggle
 requests
 urllib3

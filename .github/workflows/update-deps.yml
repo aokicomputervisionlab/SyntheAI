@@ -10,7 +10,7 @@ jobs:
   update-requirements:
     runs-on: self-hosted
     container:
-      image: nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
+      image: tensorflow/tensorflow:2.15.0.post1-gpu
       options: --gpus all --shm-size=8589934592
       env:
         TZ: Asia/Tokyo
@@ -22,7 +22,6 @@ jobs:
       - name: Install System Dependencies
         run: |
           apt-get update && apt-get install -y \
-            python3-pip \
             tzdata \
             git \
             wget \
@@ -31,11 +30,12 @@ jobs:
             libsm6 \
             libxrender1 \
             libxext6 \
-            libgl1-mesa-dev
+            libgl1-mesa-dev \
+            && rm -rf /var/lib/apt/lists/*
           
           # pip-toolssetup
-          python3 -m pip install --upgrade pip
-          python3 -m pip install pip-tools
+          pip install --upgrade pip
+          pip install pip-tools
 
       - name: Update requirements and README
         working-directory: py3
@@ -60,7 +60,7 @@ jobs:
             requirements.in --output-file requirements.txt
           
           # 3. Calculate Diff and create temporary message file
-          DIFF=$(diff requirements.txt.bak requirements.txt | grep ">" | sed 's/> //' || true)
+          DIFF=$(diff requirements.txt.bak requirements.txt | grep "^> " | grep -v "> #" | sed 's/> //' || true)
           
           if [ -n "$DIFF" ]; then
             DATE=$(date +'%Y-%m-%d')
@@ -80,14 +80,7 @@ jobs:
         working-directory: py3
         run: |
           # 1. Install newly generated requirements
-          python3 -m pip install -r requirements.txt
-          # 2. CUDA 12 REMOVE
-          echo "Removing CUDA 12 leftovers to prevent conflicts..."
-          rm -rf /usr/local/lib/python3.10/dist-packages/nvidia/*-cu12
-          
-          # 3. Setting CUDA11.8
-          export LD_LIBRARY_PATH=/usr/local/lib/python3.10/dist-packages/nvidia/cudnn/lib:/usr/local/lib/python3.10/dist-packages/nvidia/cublas/lib:/usr/local/lib/python3.10/dist-packages/nvidia/cuda_runtime/lib:$LD_LIBRARY_PATH
-          export XLA_FLAGS=--xla_gpu_cuda_data_dir=/usr/local/lib/python3.10/dist-packages/nvidia/cuda_runtime
+          pip install -r requirements.txt
           # 4.TESTCODE
           echo "--- Testing PyTorch ---"
           python3 -c "import torch; print(f'PyTorch GPU: {torch.cuda.is_available()}'); assert torch.cuda.is_available(), 'PyTorch cannot see GPU!'"
