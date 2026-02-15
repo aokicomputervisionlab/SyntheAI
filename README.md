@@ -202,3 +202,4 @@ README.mdに「謝辞（Acknowledgements）」を追記しました。
 
 * 作成者：Amembo1219
 * E-mail： butabasuko@gmail.com
+
