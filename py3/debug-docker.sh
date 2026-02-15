@@ -43,8 +43,8 @@ if not gpus:
 assert len(gpus) > 0, 'TensorFlow cannot see GPU even with system libraries!'
 print('--- TF GPU Test Passed! ---')
 EOF
-    echo '--- 5. Testing Others ---'
-    python3 <<EOF
+echo '--- 5. Testing Others ---'
+    python3 <<\EOF
 import os
 import tensorflow as tf
 import torch
@@ -68,6 +68,5 @@ assert jax_gpu == 'gpu', 'JAX failed'
 
 print('--- ALL FRAMEWORKS SUCCESS ---')
 EOF
-  
     echo '--- SUCCESS ---'
 "
