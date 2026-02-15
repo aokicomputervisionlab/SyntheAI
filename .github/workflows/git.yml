@@ -1,0 +1,50 @@
+name: Debug Git Push
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debug-git:
+    runs-on: self-hosted
+    container:
+      image: tensorflow/tensorflow:2.15.0.post1-gpu # 同じ環境でテスト
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 全履歴と .git を確実に持ってくる
+
+      - name: Inspect Environment
+        run: |
+          echo "Current User: $(whoami)"
+          echo "Current Directory: $(pwd)"
+          echo "Workspace: $GITHUB_WORKSPACE"
+          echo "Listing all files (including hidden):"
+          ls -la
+          # .git フォルダの有無を再確認
+          [ -d ".git" ] && echo ".git folder exists!" || echo "STILL NO .GIT FOLDER!"
+
+      - name: Try Git Config and Commit
+        run: |
+          # 1. コンテナ内での Git 権限エラーを力技で突破
+          git config --global --add safe.directory '*'
+          
+          # 2. ユーザー設定
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+          # 3. ダミーの変更を加えてテスト（READMEに空行を追加）
+          echo "" >> README.md
+          
+          # 4. Git 動作確認
+          git status
+          git add README.md
+          
+          if ! git diff --staged --quiet; then
+            git commit -m "debug: git push test from container"
+            git push
+            echo "Push success!"
+          else
+            echo "No changes detected."
+          fi
