@@ -6,8 +6,8 @@ on:
 jobs:
   debug-push-job:
     runs-on: self-hosted
-    # 【重要】ここには container: を書かない
-    # ホストOSにインストールされている Git をそのまま使います
+    permissions:
+      contents: write  # これでリポジトリへのプッシュが許可されます
 
     steps:
       - name: Checkout Code
