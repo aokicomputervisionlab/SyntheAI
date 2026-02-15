@@ -1,34 +1,34 @@
-name: Debug Auto Push Test
+name: Debug Commit and Push
 
 on:
-  workflow_dispatch: # 手動実行ボタン用
+  workflow_dispatch: # ボタンをポチって実行
 
 jobs:
-  debug-push:
+  debug-push-job:
     runs-on: self-hosted
-    container:
-      # Gitが入っていない例のTFイメージをあえて使います
-      image: tensorflow/tensorflow:2.15.0.post1-gpu 
-    
+    # 【重要】ここには container: を書かない
+    # ホストOSにインストールされている Git をそのまま使います
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        # Git Actionを使う場合は、ここで権限を永続化しておくのがコツです
         with:
+          # 直接Pushするために権限を維持する
           persist-credentials: true
 
-      - name: Modify File in Container
+      - name: Make Dummy Changes
         run: |
-          # Gitがなくてもできる「ファイル書き換え」だけを実行
-          DATE=$(date +'%Y-%m-%d %H:%M:%S')
-          echo "Last debug run: $DATE" > debug_log.txt
-          echo "Container check: I don't have git, but I can write files!"
-          
+          # テスト用にファイルを書き換える
+          mkdir -p py3
+          echo "# Last debug: $(date)" >> py3/requirements.txt
+          echo "" >> README.md
+          echo "Dummy changes made for debugging push."
+
       - name: Auto Commit and Push
-        # 【ここが魔法】コンテナの中のGitは使わず、Action側がプッシュを代行します
+        # このActionをコンテナ外（ホスト）で動かします
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "debug: container file update test (${{ github.run_number }})"
-          file_pattern: 'debug_log.txt'
+          commit_message: "chore: 依存ライブラリとREADMEを自動更新 (Hybrid Flow Debug)"
+          file_pattern: 'py3/requirements.txt README.md'
           commit_user_name: github-actions[bot]
           commit_user_email: github-actions[bot]@users.noreply.github.com
