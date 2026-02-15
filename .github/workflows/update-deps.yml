@@ -111,18 +111,10 @@ jobs:
       - name: Fix Permissions for Rootless
         run: chown -R $(id -u):$(id -g) .
 
-      - name: Commit and Push if changed
-        run: |
-          git config --global --add safe.directory '*'
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          cd $GITHUB_WORKSPACE
-          ls -la .git || echo "NO .GIT FOLDER FOUND!"
-          git add py3/requirements.txt README.md
-          if ! git diff --staged --quiet; then
-            git commit -m "chore: 依存ライブラリとREADMEを自動更新 ($(date +'%Y-%m-%d'))"
-            git push
-            echo "Changes pushed to repository."
-          else
-            echo "No changes to commit."
-          fi
+      - name: Auto Commit and Push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: 依存ライブラリとREADMEを自動更新 (Hybrid Flow)"
+          file_pattern: 'py3/requirements.txt README.md'
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com
