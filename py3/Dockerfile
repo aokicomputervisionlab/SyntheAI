@@ -20,7 +20,7 @@ COPY requirements.txt /install/requirements.txt
 RUN pip install --upgrade pip
 RUN pip install -r /install/requirements.txt
 # Install for PyTorch Library
-RUN pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu118
+RUN pip install torch==2.4.1+cu121 torchvision==0.19.1+cu121 torchaudio==2.4.1+cu121 --index-url https://download.pytorch.org/whl/cu121
 
 # Tensorflow Log Level Setup(Delete Warning Message)
 ENV TF_CPP_MIN_LOG_LEVEL=2

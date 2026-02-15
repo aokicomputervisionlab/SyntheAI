@@ -1,0 +1,99 @@
+# --- Index URL for PyTorch (CUDA 12.1) ---
+--extra-index-url https://download.pytorch.org/whl/cu121
+
+# --- Core Deep Learning Frameworks ---
+torch
+torchvision
+torchaudio
+xformers
+triton
+tensorflow
+keras
+jax[cuda11_pip]
+flax
+optax
+
+# --- Generative AI & Diffusion Models ---
+diffusers
+transformers
+accelerate
+safetensors
+peft
+controlnet-aux
+ftfy
+einops
+onnxruntime-gpu
+
+# --- Data Science & Advanced Analytics ---
+numpy
+pandas
+polars
+pyarrow
+scipy
+scikit-learn
+statsmodels
+sklearn-pandas
+mlxtend
+numexpr
+bottleneck
+
+# --- Gradient Boosting (The Big 3) ---
+xgboost
+lightgbm
+catboost
+
+# --- Optimization & Experiment Tracking ---
+optuna
+wandb
+hyperopt
+
+# --- Computer Vision & Image/Video Processing ---
+opencv-contrib-python-headless
+imageio
+imageio-ffmpeg
+moviepy
+imutils
+PyWavelets
+scikit-image
+shapely
+ffmpeg-python
+
+# --- Scientific Computing & Utilities ---
+h5py
+h5netcdf
+mpmath
+networkx
+nibabel
+nltk
+numba
+llvmlite
+PyYAML
+tqdm
+rich
+joblib
+
+# --- Jupyter & Interactive Development ---
+jupyterlab
+ipykernel
+ipywidgets
+ipython-sql
+holoviews
+matplotlib
+seaborn
+plotly
+
+# --- Data Acquisition & APIs ---
+pandas-gbq
+pandas-datareader
+yfinance
+kaggle
+requests
+urllib3
+
+# --- Miscellaneous Utilities ---
+absl-py
+gin-config
+humanize
+python-slugify
+tldextract
+pathlib

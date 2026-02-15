@@ -1,5 +1,8 @@
 # SyntheAI：PyTorch & TensorFlow Unified Development Environment（旧：Lyon-env）　version:2.0.2-final
 TensorflowとPyTorchを誰でも簡単に利用できるように開発された，Notebook形式のAI開発・研究環境です．元来Lyon環境での利用を想定していましたが, Lyon以外での環境にも利用可能に変更いたしました. 
+# SyntheAI：PyTorch & TensorFlow Unified Development Environment　version:3.0.a
+TensorflowとPyTorchを誰でも簡単に利用できるように開発された，Notebook形式のAI開発・研究環境です．元来東京工科大学Lyon環境での利用を想定していましたが, Lyon以外での環境にも利用可能に変更いたしました. 
+## 依存関係の更新履歴
 
 # 謝辞 / Acknowledgements
 本リポジトリの開発にあたり、以下のリソースを参考にさせていただきました。
@@ -25,6 +28,7 @@ TensorflowとPyTorchを誰でも簡単に利用できるように開発された
 # Requirement
 
 * GPUサーバー環境（SSH接続でのログインを想定）
+* CUDA11.8以降での動作を想定しています
 * Dockerシステムの環境構築済みであること(nvidia-Dockerの環境構築が済んでいること)
 * DockerCompose環境
 * vGPU利用化での利用を想定(通常環境の方はNoteを参照してください．)
@@ -161,16 +165,11 @@ PRを伴わない個別の動作不良に関するご相談や、環境構築の
 * README.mdを更新しました．
 ## 2024-10-05　Version2.0.a-release
 * Dockerfileの一部を修正しました
-* README.mdを更新しました．
-## 2025-07-29　Version2.0.b-release
-* レポジトリの変更
+* リポジトリ名を変更しました
 * README.mdを更新しました．
 ## 2025-07-30　LICENSE-release
 * [重要]本レポジトリの権利を保証するためLICENSEを設けました．詳細はLICENSEを御覧ください．
 * ディープラーニング学習中に利用者が途中でブラウザを閉じてもプログラムが終了しないように設定を変更しました．
-* README.mdを更新しました．
-## 2026-02-06　LICENSE-update
-* [重要]制限の適用範囲を明確にするため条項を改訂しました.以前のバージョンではサードパーティのコードに対しても制限が適用されると解釈されかねない記述が含まれていましたが, 今回の修正により, 独自構成（Environment）と第三者のコードを明確に分離しました. これは法的透明性の確保と権利関係の適正化を目的としています.
 * README.mdを更新しました．
 ## 2026-02-10　LICENSE-Update・DockerfileCleanUp
 * ライセンスの緩和と運用方針の変更
@@ -184,6 +183,11 @@ README.mdに「謝辞（Acknowledgements）」および「外部リファレン�
 * お詫び
   
 本件において、不適切なライセンス設定や表記によりご不安・ご迷惑をおかけした皆様に、深くお詫び申し上げます。今後は透明性の高い開発・管理に努めてまいります。
+
+## 2026-02-13　Version3.0.a-release
+*　ライブラリを自動で更新する機能を導入しました。
+
+
   
 # Author
 
