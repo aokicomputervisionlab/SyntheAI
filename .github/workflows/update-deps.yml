@@ -113,9 +113,11 @@ jobs:
 
       - name: Commit and Push if changed
         run: |
-          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config --global --add safe.directory '*'
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
+          cd $GITHUB_WORKSPACE
+          ls -la .git || echo "NO .GIT FOLDER FOUND!"
           git add py3/requirements.txt README.md
           if ! git diff --staged --quiet; then
             git commit -m "chore: 依存ライブラリとREADMEを自動更新 ($(date +'%Y-%m-%d'))"
