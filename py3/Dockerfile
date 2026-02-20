@@ -1,4 +1,5 @@
 FROM tensorflow/tensorflow:2.15.0.post1-gpu
+FROM tensorflow/tensorflow:2.15.0.post1-gpu
 # TimeZone　Setup
 ENV TZ=Asia/Tokyo
 ENV DEBIAN_FRONTEND=noninteractive
