@@ -1,7 +1,7 @@
 # SyntheAI： PyTorch, TensorFlow and JAX Unified Development Environment version:3.0.a
 TensorflowとPyTorchを誰でも簡単に利用できるように開発された，Notebook形式のAI開発・研究環境です．元来東京工科大学Lyon環境での利用を想定していましたが, Lyon以外での環境にも利用可能に変更いたしました. 
 ## 依存関係の更新履歴
-
+[最新のライブラリ更新レポートはこちら (LIBRARY_UPDATE.md)](LIBRARY_UPDATE.md)
 # Version:3.0.a-Release🎉🎉
 SynthAIがメジャーバージョンアップしました!!
 * JAXの需要に答えるため、JAX環境も利用できるようになりました。デモコードは近日配布します。
@@ -203,5 +203,4 @@ README.mdに「謝辞（Acknowledgements）」を追記しました。
 
 * 作成者：Amembo1219
 * E-mail： butabasuko@gmail.com
-
 
