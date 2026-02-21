@@ -57,7 +57,7 @@ EOF
         --title "🤖 依存関係の自動アップデート ($DATE)" \
         --body "$PR_BODY" \
         --base main \
-        --head "$BRANCH_NAME" || echo "PR might already exist."
+        --head "Amenbo1219:$BRANCH_NAME" || echo "PR might already exist."
 else
     echo "GitHub CLI (gh) not found. Skipping PR creation."
 fi
