@@ -26,6 +26,7 @@ if [ -z "$(git status --porcelain py3/requirements.txt LIBRARY_UPDATE.md)" ]; th
 fi
 
 # 3. ブランチの作成
+git branch -D $BRANCH_NAME 2>/dev/null
 echo "Creating new branch: $BRANCH_NAME"
 git checkout -b "$BRANCH_NAME" || (git checkout "$BRANCH_NAME" && git pull origin "$BRANCH_NAME")
 
