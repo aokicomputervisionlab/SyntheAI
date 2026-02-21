@@ -6,7 +6,7 @@ cd "$SCRIPT_DIR/../.."
 ROOT_DIR=$(pwd)
 DATE=$(date '+\%Y\%m\%d-\%H\%M\%S')
 BRANCH_NAME="update-deps-$DATE"
-
+MY_USER=$(gh api user -q .login)
 echo "--- Git Push & PR Process Start ---"
 
 # 1. GPU情報の取得 (nvidia-smi から名前だけを抽出)
@@ -59,7 +59,7 @@ EOF
         --title "🤖 依存関係の自動アップデート ($DATE)" \
         --body "$PR_BODY" \
         --base master \
-        --head "$BRANCH_NAME" || echo "PR might already exist."
+        --head "$MY_USER:$BRANCH_NAME" || echo "PR might already exist."
 else
     echo "GitHub CLI (gh) not found. Skipping PR creation."
 fi
