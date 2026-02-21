@@ -55,6 +55,7 @@ EOF
 )
 
     gh pr create \
+        --repo Amenbo1219/SyntheAI \
         --title "🤖 依存関係の自動アップデート ($DATE)" \
         --body "$PR_BODY" \
         --base master \
