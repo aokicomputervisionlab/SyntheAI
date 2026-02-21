@@ -4,7 +4,7 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR/../.."
 ROOT_DIR=$(pwd)
-DATE=$(date +'%Y%m%d')
+DATE=$(date '+\%Y\%m\%d-\%H\%M\%S')
 BRANCH_NAME="update-deps-$DATE"
 
 echo "--- Git Push & PR Process Start ---"
