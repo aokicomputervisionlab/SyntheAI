@@ -69,7 +69,7 @@ cat <<EOF > "$LOG_FILE"
 # 📦 Library Update Report
 
 ## 🛰️ 検証環境
-- **GPU**: $GPU_NAME (Tesla P40)
+- **GPU**: $GPU_NAME 
 - **最終更新日時**: $DATE
 
 ## 🚀 アップデート詳細
