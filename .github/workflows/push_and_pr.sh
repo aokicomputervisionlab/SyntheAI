@@ -4,9 +4,9 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR/../.."
 ROOT_DIR=$(pwd)
-DATE=$(date +'%Y%m%d')
+DATE=$(date '+%Y%m%d-%H%M%S')
 BRANCH_NAME="update-deps-$DATE"
-
+MY_USER=$(gh api user -q .login)
 echo "--- Git Push & PR Process Start ---"
 
 # 1. GPU情報の取得 (nvidia-smi から名前だけを抽出)
@@ -55,10 +55,11 @@ EOF
 )
 
     gh pr create \
+        --repo Amenbo1219/SyntheAI \
         --title "🤖 依存関係の自動アップデート ($DATE)" \
         --body "$PR_BODY" \
         --base master \
-        --head "Amenbo1219:$BRANCH_NAME" || echo "PR might already exist."
+        --head "$MY_USER:$BRANCH_NAME" || echo "PR might already exist."
 else
     echo "GitHub CLI (gh) not found. Skipping PR creation."
 fi
